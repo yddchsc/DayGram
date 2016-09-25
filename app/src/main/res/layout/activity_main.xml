@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:gravity="fill_vertical">
+<RelativeLayout
+    android:id="@+id/listFooter"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/xian"
+        android:id="@+id/imageView" />
+
+    <Spinner
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/imageView1"
+        android:entries="@array/month"
+        android:id="@+id/month" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/xian1"
+        android:id="@+id/imageView1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toLeftOf="@+id/year" />
+
+    <Spinner
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/year"
+        android:entries="@array/year"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toLeftOf="@+id/imageView2" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/xian1"
+        android:layout_marginRight="10dp"
+        android:id="@+id/imageView2"
+        android:layout_marginLeft="5dp"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_toLeftOf="@+id/imageButton" />
+
+    <ImageButton
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/add"
+        android:layout_marginRight="20dp"
+        android:id="@+id/imageButton"
+        android:layout_marginLeft="20dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_centerInParent="true" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/xian1"
+        android:id="@+id/imageView3"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/imageButton"
+        android:layout_toRightOf="@+id/imageButton" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:id="@+id/imageView4"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_toRightOf="@+id/imageView3"
+        android:layout_marginLeft="15dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button1"
+        android:id="@+id/imageView5"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/imageView4" />
+</RelativeLayout>
+    <ListView
+        android:id="@+id/myListView"
+        android:divider="#00000000"
+        android:dividerHeight="10dp"
+        android:layout_margin="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/listFooter">
+    </ListView>
+</RelativeLayout>
