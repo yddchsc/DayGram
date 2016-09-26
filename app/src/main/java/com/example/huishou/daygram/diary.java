@@ -2,13 +2,19 @@ package com.example.huishou.daygram;
 
 import android.graphics.Bitmap;
 
-public class DayItemListViewBean {
+import java.io.Serializable;
+
+public class diary implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private int type;          //类型
     private String text1 ;       //文本信息
     private Bitmap icon ;       //图片
     private String text2 ;
     private String text3 ;
-    public DayItemListViewBean(){
+
+    public diary(){
     }
 
     //三个get方法和三个set方法

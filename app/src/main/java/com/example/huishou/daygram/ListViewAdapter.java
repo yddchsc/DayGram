@@ -13,10 +13,8 @@ import android.widget.TextView;
 
 class ListViewAdapter extends BaseAdapter {
     private Context context;                        //运行上下文
-    private List<DayItemListViewBean> listItems;    //日记信息集合
+    private List<diary> listItems;    //日记信息集合
     private LayoutInflater listContainer;           //视图容器
-
-    private static final String TAG="TestTag";
 
     public final class ListItemView{                //自定义控件集合
         public TextView week;
@@ -25,7 +23,7 @@ class ListViewAdapter extends BaseAdapter {
         public ImageView point;
     }
 
-    public ListViewAdapter(Context context, List<DayItemListViewBean> listItems) {
+    public ListViewAdapter(Context context, List<diary> listItems) {
         this.context = context;
         listContainer = LayoutInflater.from(context);   //创建视图容器并设置上下文
         this.listItems = listItems;
@@ -46,7 +44,7 @@ class ListViewAdapter extends BaseAdapter {
     }
 
     public int getItemViewType(int position){
-        DayItemListViewBean bean = listItems.get(position);
+        diary bean = listItems.get(position);
         return bean.getType();
     }
     @Override
@@ -64,7 +62,6 @@ class ListViewAdapter extends BaseAdapter {
             listItemView = (ListItemView) convertView.getTag();
             return convertView;
         }else{*/
-            Log.d(TAG, Integer.toString(position));
             if (getItemViewType(position)  ==  1) {
                 listItemView = new ListItemView();
                 //获取list_item布局文件的视图
