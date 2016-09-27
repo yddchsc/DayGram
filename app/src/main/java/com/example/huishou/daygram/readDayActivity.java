@@ -3,7 +3,9 @@ package com.example.huishou.daygram;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.io.FileInputStream;
@@ -11,37 +13,49 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 
 public class readDayActivity extends Activity {
+
+    private diary bean;
+    private String content = "";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit);
 
-        String content="";
-        EditText editText =(EditText)findViewById(R.id.editText2);
-        content=editText.getText().toString();
+        bean = new diary();
+        bean= (diary) getIntent().getSerializableExtra("diary");
+
+        final EditText editText = (EditText) findViewById(R.id.editText2);
+        editText.setText(bean.getText("content"));
+        content = editText.getText().toString();
 
         String day = "";
-        TextView textview =(TextView)findViewById(R.id.textView);
-        day=textview.getText().toString();
+        TextView textview = (TextView) findViewById(R.id.textView);
+        textview.setText(bean.getText("date"));
 
-        diary sod = new diary();
-        sod.setText("day",day);
-        sod.setText("content",content);
-
-//保存对象到本地
-        saveObject("object.dat",sod);
-
-//得到保存于本地路径的对象
-        diary s = (diary) getObject("object.dat");
-        if (null != s) {
-            System.out.println("姓名：" + s.getText("day") + ", 年龄：" + s.getText("content"));
-        }else{
-            System.out.println("读取对象失败");
-        }
+        ImageButton save =(ImageButton) findViewById(R.id.imageButton1);
+        save.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (content != "") {
+                    bean.setText("content", content);
+                    bean.setType(1);
+                }else {
+                    bean.setType(0);
+                }
+                int i = Integer.parseInt(bean.getText("day"))-1;
+                List<diary> s  = (List<diary>) getObject("object.dat");
+                s.set(i,bean);
+                saveObject("object.dat",s);
+                Intent intent=new Intent(readDayActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-    private void saveObject(String name,diary d){
+    private void saveObject(String name,List<diary> d){
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
