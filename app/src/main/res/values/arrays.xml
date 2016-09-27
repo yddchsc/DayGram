@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="month">
+        <item>Month</item>
         <item>January</item>
         <item>February</item>
         <item>March</item>
         <item>April</item>
         <item>May </item>
-        <item>January</item>
         <item>June</item>
         <item>July</item>
         <item>August</item>
@@ -16,6 +16,7 @@
         <item>December</item>
     </string-array>
     <string-array name="year">
+        <item>year</item>
         <item>2014</item>
         <item>2015 </item>
         <item>2016</item>

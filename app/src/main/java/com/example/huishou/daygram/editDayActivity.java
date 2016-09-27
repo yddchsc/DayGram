@@ -13,11 +13,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 
-public class readDayActivity extends Activity {
+public class editDayActivity extends Activity {
 
     private diary bean;
     private String content = "";
@@ -27,31 +26,34 @@ public class readDayActivity extends Activity {
         setContentView(R.layout.edit);
 
         bean = new diary();
-        bean= (diary) getIntent().getSerializableExtra("diary");
+        bean= (diary) getIntent().getSerializableExtra("edit");
 
         final EditText editText = (EditText) findViewById(R.id.editText2);
         editText.setText(bean.getText("content"));
-        content = editText.getText().toString();
 
-        String day = "";
         TextView textview = (TextView) findViewById(R.id.textView);
-        textview.setText(bean.getText("date"));
+        textview.setText(bean.getText("date")+"-"+bean.getText("day"));
 
         ImageButton save =(ImageButton) findViewById(R.id.imageButton1);
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                content = editText.getText().toString();
                 if (content != "") {
-                    bean.setText("content", content);
+
+                    System.out.println("内容"+ content);
+
+                    bean.setText("content", content.trim());
                     bean.setType(1);
                 }else {
                     bean.setType(0);
                 }
                 int i = Integer.parseInt(bean.getText("day"))-1;
-                List<diary> s  = (List<diary>) getObject("object.dat");
+                List<diary> s  = (List<diary>) getObject(bean.getText("date")+".dat");
                 s.set(i,bean);
-                saveObject("object.dat",s);
-                Intent intent=new Intent(readDayActivity.this,MainActivity.class);
+                saveObject(bean.getText("date")+".dat",s);
+                Intent intent=new Intent(editDayActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

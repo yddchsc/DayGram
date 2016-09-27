@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@drawable/done"
+        android:focusable="true"
         android:layout_marginRight="35dp"
         android:id="@+id/imageButton1"
         android:layout_alignBottom="@+id/imageButton2"
@@ -53,11 +54,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
         android:width="250dp"
-        android:height="300dp"
+        android:height="325dp"
+        android:background="@null"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView7"
+        android:background="@drawable/hengxian"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
